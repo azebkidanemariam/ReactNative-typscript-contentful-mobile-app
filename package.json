@@ -1,5 +1,5 @@
 {
-  "name": "contentful",
+  "name": "content",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -10,11 +10,28 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-firebase/app": "^14.2.4",
+    "@react-navigation/bottom-tabs": "^6.1.0",
+    "@react-navigation/native": "^6.0.7",
+    "@react-navigation/stack": "^6.1.0",
+    "@types/react-native-dotenv": "^0.2.0",
+    "contentful": "^9.1.6",
+    "contentful-management": "^7.51.4",
+    "contentful-typescript-codegen": "^3.2.3",
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
+    "firebase": "^9.6.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-firebase-hooks": "^5.0.0",
     "react-native": "0.64.3",
+    "react-native-dotenv": "^3.3.1",
+    "react-native-gesture-handler": "^2.1.1",
+    "react-native-reanimated": "^2.3.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.2",
+    "react-native-svg": "^12.1.1",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
