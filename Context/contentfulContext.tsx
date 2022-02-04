@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 const { createClient } = require('contentful/dist/contentful.browser.min.js')
-import { ContentContextInterface, Article } from './types'
-// import { CF_SPACE_ID, CF_ACCESS_KEY } from '@env'
+import { ContentContextInterface, Article,Blog } from './types'
+ //import { CF_SPACE_ID, CF_ACCESS_KEY } from '@env'
+ //console.log(CF_SPACE_ID)
+
 
 const client = createClient({
   space:  'z6btip2d3f8h',
@@ -13,6 +15,7 @@ export const ContentContext =
 
 const ContentContextProvider: React.FC = (props) => {
   const [articles, setArticles] = useState<Article[]>()
+  const [blogs, setBlogs] = useState<Blog[]>()
 
   useEffect(() => {
     client
@@ -23,9 +26,19 @@ const ContentContextProvider: React.FC = (props) => {
         setArticles(entries.items)
       })
   }, [])
+  useEffect(() => {
+    client
+      .getEntries({
+        content_type: 'blog',
+      })
+      .then((entries: { items: Blog[] }) => {
+        setBlogs(entries.items)
+      })
+  }, [])
 
   const contentContext: ContentContextInterface = {
     articles: articles!,
+    blogs: blogs!,
   }
 
   return (

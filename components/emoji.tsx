@@ -1,6 +1,6 @@
 import React from "react";
 import { Text,View,StyleSheet,Pressable } from "react-native";
-import { theme } from "../types/themes";
+import { theme } from "../sdha/themes";
 
 const moodOptions = [
     { emoji: '🧑‍💻', description: 'studious' },

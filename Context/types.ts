@@ -37,8 +37,6 @@ export interface Author {
       }
     }
   }
-  //blog
-
   export interface Blog {
     sys: {
       id: string
@@ -49,10 +47,11 @@ export interface Author {
       }
     }
     fields: {
-      author: Author
+      author: string
       paragraph: string
       title: string
     images: BlogImage[]
+    featureImage: BlogImage
       
     }
   }
@@ -62,6 +61,10 @@ export interface Author {
         url: string
       }
     }
+  } 
+  export interface ContentContextInterface {
+    blogs: any[]
+   
   }
   export interface ContentContextInterface {
     articles: any[]
