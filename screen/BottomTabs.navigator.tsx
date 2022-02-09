@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeIcon, BlogIcon, AnalyticIcon } from "../components/icons";
-import Analytic from "./Analytic.screen";
+import { HomeIcon, BlogIcon, AnalyticIcon,MusicIcon } from "../components/icons";
+import Music from "./music.screen";
 import Home from "./home.screen";
 import Blogs from "./blog.screen";
 import { Text } from "react-native-svg";
@@ -22,7 +22,7 @@ export const BottomTabsNavigator: React.FC = () => {
           if (route.name === "Blogs") {
             return <BlogIcon size={size} color={color} />;
           }
-          if (route.name === "Analytic") {
+          if (route.name === "Music") {
             return <AnalyticIcon size={size} color={color} />;
           }
           return null;
@@ -40,10 +40,12 @@ export const BottomTabsNavigator: React.FC = () => {
         options={{ title: "my blog Page" }}
       />
       <BottomTabs.Screen
-        name="Analytic"
-        component={Analytic}
-        options={{ title: "Analytic Page" }}
+        name="Music"
+        component={Music}
+        options={{ title: "Music Room screen" }}
       />
     </BottomTabs.Navigator>
   );
 };
+
+

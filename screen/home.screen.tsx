@@ -7,7 +7,7 @@ import BreakTime from "./takeAbreak";
 import { useNavigation } from "@react-navigation/core";
 
 const imageUrl = 
-'https://images.unsplash.com/photo-1640702149643-d172d1463fe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyNHw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
+'https://images.unsplash.com/photo-1643738238643-5c3ffbe46649?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
 
 const Home: React.FC =({})=>{
     const navigation = useNavigation()

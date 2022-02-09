@@ -6,6 +6,7 @@ import ContentContextProvider from './Context/contentfulContext'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { BottomTabsNavigator } from './screen/BottomTabs.navigator';
+import { theme } from './sdha/themes';
 /* import Blogs from './screen/blog.screen';
 import { HomeStack } from './screen/StackNavigator';
 import BreakTime from './screen/takeAbreak';
@@ -32,4 +33,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bottomTab:{
+    backgroundColor:theme.colorPurple
+  }
 })

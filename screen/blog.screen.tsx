@@ -4,82 +4,18 @@ import {
   Text,
   View,
   FlatList,
-  Button,
   ListRenderItem,
-  ListViewComponent,
-  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
 } from "react-native";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { ContentContext } from "../Context/contentfulContext";
-import { Article, Blog, BlogImage } from "../Context/types";
+import { Blog } from "../Context/types";
 import { theme } from "../sdha/themes";
-import { color } from "react-native-reanimated";
-import { ScrollView } from "react-native-gesture-handler";
+/* import { ScrollView } from "react-native-gesture-handler"; */
 
-/* const Item = ({ data }: { data: Article }) => {
-  return (
-    <View >
-      <Text style={styles.headline}>{data.fields.headline}</Text>
-    </View>
-  );
-}
-
-const renderItem: ListRenderItem<Article> = ({ item }) => {
-  
-  if (item.fields.featureImage) {
-
-    return (
-      <View style={[styles.articleCard]}>
-      <Text style={styles.headline}>{item.fields.category}</Text>
-      <Image
-        style={styles.featureImage}
-        source={{
-          uri: `https:${item.fields.featureImage.fields.file.url}`,
-        }} />
-          <Text style={styles.headline}>{item.fields.headline}</Text>
-
-      
-     
-    </View>
-    )
-  } else return null
-  } */
-
-/* const Blogs = () => {
-    const { articles } = useContext(ContentContext)!
-    
-    return (
-      
-      <SafeAreaView style={styles.container}>
-      
-      <View style={styles.container}>
-      {articles && articles.length ? (
-        <FlatList  style={styles.box}
-        data={articles}
-        keyExtractor={(item) => item.sys.id}
-        renderItem={renderItem}
-        
-        />
-        ): (
-          <Text>Loading...</Text>
-          )}
-          
-          </View>
-          </SafeAreaView>
-          
-          
-          )
-        }
-        export default Blogs */
-/*   const Item = ({ data }: { data: Blog }) => {
-          return (
-            <View >
-              <Text style={styles.paragraph}>{data.fields.paragraph}</Text>
-            </View>
-          );
-        } */
 const renderItem: ListRenderItem<Blog> = ({ item }) => {
-  if (item.fields.featureImage || item.fields.images) {
+  if (item.fields.featureImage) {
     return (
       <View style={[styles.articleCard]}>
         <Text style={styles.title}>{item.fields.title}</Text>
@@ -90,18 +26,21 @@ const renderItem: ListRenderItem<Blog> = ({ item }) => {
           }}
         />
         <Text style={styles.paragraph}>{item.fields.paragraph}</Text>
+          <ScrollView horizontal={true} style={styles.imageList}> 
+            {item.fields.images.map((img: any) => (
+              <View key={img.sys.id}>
+                  <Image
+                    style={styles.image}
+                    source={{
+                      uri: `https:${img.fields.file.url}`,
+                    }}
+                  />
 
-        <View style={styles.imageList}>
-          {item.fields.images.map((img: any) => (
-            <Image
-              style={styles.image}
-              source={{
-                uri: `https:${img.fields.file.url}`,
-              }}
-            />
-          ))}
-        </View>
-      </View>
+           
+              </View>
+            ))}
+      </ScrollView>
+          </View>
     );
   } else return null;
 };
@@ -109,22 +48,19 @@ export default function Blogs() {
   const { blogs } = useContext(ContentContext)!;
 
   return (
-    <SafeAreaView style={styles.box}>
-      <ScrollView>
-        <View style={styles.container}>
-          {blogs && blogs.length ? (
-            <FlatList
-              style={styles.box}
-              data={blogs}
-              keyExtractor={(item) => item.sys.id}
-              renderItem={renderItem}
-            />
-          ) : (
-            <Text>Loading...</Text>
-          )}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={styles.container}>
+      {blogs && blogs.length ? (
+        <FlatList
+          style={styles.flatlists}
+          data={blogs}
+          keyExtractor={(item) => item.sys.id}
+          renderItem={renderItem}
+        />
+      ) : (
+        <Text>Loading...</Text>
+      )
+      }
+    </View>
   );
 }
 
@@ -134,24 +70,22 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     justifyContent: "center",
-    flexDirection: "row",
     alignItems: "center",
   },
   articleCard: {
-    /*  padding: 20, */
-
     margin: 5,
     justifyContent: "space-between",
+    
   },
   paragraph: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "600",
     fontFamily: "Times New Roman",
     paddingHorizontal: 5,
     paddingVertical: 10,
-    color: theme.colorPurple,
+    color: theme.colorSadelBrown,
     lineHeight: 30,
-    letterSpacing: 0.3,
+    letterSpacing: 0.2,
   },
   featureImage: {
     borderRadius: 200,
@@ -172,21 +106,21 @@ const styles = StyleSheet.create({
   flatlists: {
     padding: 10,
     marginBottom: 50,
-    alignSelf: "center",
-  },
-  box: {
-    padding: 10,
-    alignSelf: "center",
-    marginBottom: 10,
   },
   imageList: {
-    flex: 1,
-    justifyContent: "space-between",
-    flexDirection: "column",
+   flexDirection:'row'
+   /*  justifyContent: "space-between", */
   },
   image: {
+    borderRadius: 200,
+    width: 300,
     height: 300,
-    width: "100%",
-    marginBottom: 20,
+    alignSelf: "center",
+    flexDirection:'row'
+  },
+  scrollView: {
+    backgroundColor: "pink",
+    marginHorizontal: 20,
+    flexDirection:'row'
   },
 });
