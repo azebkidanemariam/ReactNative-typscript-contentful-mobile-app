@@ -1,14 +1,13 @@
 import React, { useState, useCallback, useRef } from "react";
 import { Button, View, Alert, Image, StyleSheet } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
-/* import { View,Text,Image } from "react-native"; */
-import { WebView } from "react-native-webview";
 import { theme } from "../sdha/themes";
 
 /* const ImgSrc = require('../assets/HistoryPageHero.png') */
 const imageUrl =
   "https://images.unsplash.com/photo-1640702149643-d172d1463fe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyNHw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60";
-
+/*   const imageUrl =
+  'https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1766&q=80'; */
 const Music: React.FC = () => {
   const [playing, setPlaying] = useState(false);
 
