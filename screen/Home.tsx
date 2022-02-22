@@ -3,7 +3,6 @@ import { View,Text,Image,StyleSheet,Pressable } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MoodPicker } from "../components/emoji";
 import { theme } from "../sdha/themes";
-import BreakTime from "./takeAbreak";
 import { useNavigation } from "@react-navigation/core";
 
 /* const imageUrl = 
@@ -15,12 +14,6 @@ const Home: React.FC =({})=>{
     return(
 
     <View style={styles.container}>
-        <TouchableOpacity onPress={() => {
-            //@ts-ignore
-            navigation.navigate('BreakTime')
-        }}>
-<Text>{BreakTime}</Text>
-        </TouchableOpacity>
        <Image source={{uri : imageUrl}} style={{ flex:1 }} /> 
           <View style={[StyleSheet.absoluteFill, {justifyContent: 'center'}]}>
              <MoodPicker /> 

@@ -20,9 +20,6 @@ export const MoodPicker: React.FC = () => {
           </Text>
         ))}
       </View>
-      {/*     <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Mood blog</Text>
-      </Pressable> */}
     </View>
   );
 };
@@ -33,8 +30,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   container: {
-    borderWidth: 2,
-    borderColor: theme.colorBlue,
     margin: 10,
     borderRadius: 10,
     padding: 20,
@@ -46,12 +41,9 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textAlign: "center",
     marginBottom: 20,
-    color: theme.colorBlue,
-  
+    color: theme.colorBlack,
+    fontFamily: "Avenir",
   },
-
- 
-
   moodText: {
     fontSize: 24,
   },

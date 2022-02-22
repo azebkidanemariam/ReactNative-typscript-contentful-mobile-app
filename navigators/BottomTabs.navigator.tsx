@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeIcon, BlogIcon, AnalyticIcon,MusicIcon } from "../components/icons";
-import Music from "./music.screen";
-import Home from "./home.screen";
-import Blogs from "./blog.screen";
+import Music from "../screen/Music";
+import Home from "../screen/Home";
+import Blogs from "../screen/blog/Blogs";
 import { Text } from "react-native-svg";
 import { theme } from "../sdha/themes";
 
@@ -14,7 +14,15 @@ export const BottomTabsNavigator: React.FC = () => {
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: theme.colorPurple,
         tabBarInactiveTintColor: theme.colorBrown,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
+        tabBarStyle:{
+          backgroundColor:"pink",
+          borderTopLeftRadius:15,
+          borderTopRightRadius:15,
+          paddingHorizontal:10,
+          paddingBottom:4,
+          height:60,
+        },
         tabBarIcon: ({ size, color }) => {
           if (route.name === "Home") {
             return <HomeIcon size={size} color={color} />;
@@ -32,17 +40,15 @@ export const BottomTabsNavigator: React.FC = () => {
       <BottomTabs.Screen
         name="Home"
         component={Home}
-        options={{ title: "Home Page" }}
+        
       />
       <BottomTabs.Screen
         name="Blogs"
         component={Blogs}
-        options={{ title: "my blog Page" }}
       />
       <BottomTabs.Screen
         name="Music"
         component={Music}
-        options={{ title: "Music Room screen" }}
       />
     </BottomTabs.Navigator>
   );

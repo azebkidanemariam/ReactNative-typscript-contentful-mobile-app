@@ -9,23 +9,33 @@ import {
   ScrollView,
 } from "react-native";
 import React, { useContext } from "react";
-import { ContentContext } from "../Context/contentfulContext";
-import { Blog } from "../Context/types";
-import { theme } from "../sdha/themes";
-/* import { ScrollView } from "react-native-gesture-handler"; */
+import { ContentContext } from "../../Context/contentfulContext";
+import { Blog } from "../../Context/types";
+import { theme } from "../../sdha/themes";
+import Button from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
+
+
+
 
 const renderItem: ListRenderItem<Blog> = ({ item }) => {
+
   if (item.fields.featureImage) {
     return (
       <View style={[styles.articleCard]}>
-        <Text style={styles.title}>{item.fields.title}</Text>
         <Image
           style={styles.featureImage}
           source={{
             uri: `https:${item.fields.featureImage.fields.file.url}`,
           }}
         />
+              
+       
+          <Text style={styles.title}>{item.fields.title}</Text>
         <Text style={styles.paragraph}>{item.fields.paragraph}</Text>
+        
+
+        
           <ScrollView horizontal={true} style={styles.imageList}> 
             {item.fields.images.map((img: any) => (
               <View key={img.sys.id}>
@@ -37,6 +47,7 @@ const renderItem: ListRenderItem<Blog> = ({ item }) => {
                   />
 
            
+<View style={styles.planCardDivider}></View>
               </View>
             ))}
       </ScrollView>
@@ -44,8 +55,14 @@ const renderItem: ListRenderItem<Blog> = ({ item }) => {
     );
   } else return null;
 };
-export default function Blogs() {
+const Blogs: React.FC = () => {
+  const navigation = useNavigation();
   const { blogs } = useContext(ContentContext)!;
+  const handleCreateAccount = () => {
+    //@ts-ignore
+    navigation.navigate("BlogDetail");
+  };
+  <Button text="SKAPA NYTT KONTO" onPress={handleCreateAccount} />
 
   return (
     <View style={styles.container}>
@@ -60,9 +77,13 @@ export default function Blogs() {
         <Text>Loading...</Text>
       )
       }
+       
+      <View style={styles.planCardDivider}></View>
+      
     </View>
   );
 }
+export default Blogs
 
 const styles = StyleSheet.create({
   container: {
@@ -78,30 +99,38 @@ const styles = StyleSheet.create({
     
   },
   paragraph: {
-    fontSize: 14,
-    fontWeight: "600",
-    fontFamily: "Times New Roman",
+    fontSize: 18,
+    fontWeight: "400",
     paddingHorizontal: 5,
     paddingVertical: 10,
-    color: theme.colorSadelBrown,
-    lineHeight: 30,
-    letterSpacing: 0.2,
+    color: theme.colorBlack,
+    lineHeight:30,
+    letterSpacing: 1,
+    fontFamily:'Didot',
   },
   featureImage: {
-    borderRadius: 200,
-    width: 300,
+    flex:1,
+    borderRadius: 10,
+    width:"100%",
     height: 300,
     alignSelf: "center",
   },
   title: {
     fontWeight: "900",
-    fontSize: 20,
-    color: theme.colorPurple,
+    fontSize: 24,
+    color: theme.colorWhite,
     paddingHorizontal: 5,
     paddingVertical: 10,
+    marginBottom:20,
+    /* marginTop:20, */
     lineHeight: 30,
-    alignSelf: "flex-end",
+   alignItems:"center",
     letterSpacing: 1,
+    fontFamily:'Avenir', 
+    margin: 10,
+    borderRadius: 10,
+    backgroundColor: "rgba(0,0,0,0.2)", 
+    
   },
   flatlists: {
     padding: 10,
@@ -112,15 +141,27 @@ const styles = StyleSheet.create({
    /*  justifyContent: "space-between", */
   },
   image: {
-    borderRadius: 200,
-    width: 300,
-    height: 300,
+    paddingVertical: 20,
+    marginVertical: 10,
+    marginLeft:10,
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    width:250,
+    height:400,
     alignSelf: "center",
-    flexDirection:'row'
+    flexDirection:'row',
+
+    
   },
   scrollView: {
     backgroundColor: "pink",
     marginHorizontal: 20,
     flexDirection:'row'
+  },
+  planCardDivider: {
+    borderBottomColor: "grey",
+    marginBottom: 20,
+    height: 20,
+    borderBottomWidth: 1,
   },
 });

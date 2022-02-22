@@ -1,39 +1,40 @@
+import React from "react";
+import { StyleSheet } from "react-native";
+import ContentContextProvider from "./Context/contentfulContext";
+import { NavigationContainer } from "@react-navigation/native";
+import { BottomTabsNavigator } from "./navigators/BottomTabs.navigator";
+import { theme } from "./sdha/themes";
+import { LogBox } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font'
 
-import React from 'react';
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet } from 'react-native'
-import ContentContextProvider from './Context/contentfulContext'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { BottomTabsNavigator } from './screen/BottomTabs.navigator';
-import { theme } from './sdha/themes';
-/* import Blogs from './screen/blog.screen';
-import { HomeStack } from './screen/StackNavigator';
-import BreakTime from './screen/takeAbreak';
-import SingleBlog from './screen/singleBlog';
-import Home from './screen/home.screen'; */
+LogBox.ignoreLogs(["Seems like you're using an old API with gesture components, check out new Gestures system!"])
+export default function App() {
+  let[fontsLoaded] = useFonts({
+    'Avenir': require('./assets/fonts/avenir.otf'),
+    'Didot': require('./assets/fonts/DidotRegular.ttf'),
+  })
 
-const Stack = createStackNavigator();
-
-const App = () =>{
+  if(!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
-    <ContentContextProvider>
-      <NavigationContainer>
-        <BottomTabsNavigator/>
-</NavigationContainer>
-    </ContentContextProvider>
-  )
+    <NavigationContainer>
+      <ContentContextProvider>
+        <BottomTabsNavigator />
+      </ContentContextProvider>
+    </NavigationContainer>
+  );
 }
-export default App
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'teal',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "teal",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  bottomTab:{
-    backgroundColor:theme.colorPurple
-  }
-})
+  bottomTab: {
+    backgroundColor: theme.colorPurple,
+  },
+});
