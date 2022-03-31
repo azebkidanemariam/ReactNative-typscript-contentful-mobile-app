@@ -5,10 +5,10 @@ import { MoodPicker } from "../components/emoji";
 import { theme } from "../sdha/themes";
 import { useNavigation } from "@react-navigation/core";
 
-/* const imageUrl = 
-'https://images.unsplash.com/photo-1643738238643-5c3ffbe46649?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80' */
-const imageUrl =
-  'https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1766&q=80';
+const imageUrl = 
+'https://previews.123rf.com/images/gagarych/gagarych1710/gagarych171000085/87118544-ethiopia-vector-seal-vintage-country-map-stamp-grunge-rubber-stamp-with-made-in-ethiopia-text-and-ma.jpg'
+/* const imageUrl =
+  'https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1766&q=80'; */
 const Home: React.FC =({})=>{
     const navigation = useNavigation()
     return(
